@@ -7,9 +7,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/itemDeal/itemDealList.asp', async (req, res) => {
-  const params = new URLSearchParams(req.query);
-  const targetUrl = `https://roz.gnjoy.com/itemDeal/itemDealList.asp?${params}`;
+app.use(async (req, res) => {
+  const targetUrl = 'https://roz.gnjoy.com' + req.url;
 
   try {
     const response = await fetch(targetUrl, {
